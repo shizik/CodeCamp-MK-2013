@@ -1,0 +1,467 @@
+<!doctype html>
+<html lang="en">
+
+	<head>
+		<meta charset="utf-8">
+
+		<title>Building Kickass SPAs with AngularJS | CodeCamp '13</title>
+
+		<meta name="author" content="Marko Ilievski">
+
+		<meta name="apple-mobile-web-app-capable" content="yes" />
+		<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+		<link rel="stylesheet" href="css/reveal.min.css">
+		<link rel="stylesheet" href="css/simple.css" id="theme">
+
+		<!-- For syntax highlighting -->
+		<link rel="stylesheet" href="lib/css/zenburn.css">
+
+		<!-- If the query includes 'print-pdf', use the PDF print sheet -->
+		<script>
+			document.write( '<link rel="stylesheet" href="css/print/' + ( window.location.search.match( /print-pdf/gi ) ? 'pdf' : 'paper' ) + '.css" type="text/css" media="print">' );
+		</script>
+
+		<!--[if lt IE 9]>
+		<script src="lib/js/html5shiv.js"></script>
+		<![endif]-->
+	</head>
+
+	<body>
+
+		<div class="reveal">
+
+			<!-- Any section element inside of this container is displayed as a slide -->
+			<div class="slides">
+				<section data-background="images/start-slide.jpg" data-background-size="contain"></section>
+				<section>
+					<h2>Building Kickass SPAs<br />with AngularJS</h2>
+					<br />
+					<p>
+						<strong>Marko Ilievski</strong><br />
+						Sr. Software Engineer, Netchex<br /><br />
+						<a href="https://github.com/shizik/" target="_blank">github.com/shizik</a><br />
+						<a href="https://github.com/wcpro/ScaffR" target="_blank">github.com/wcpro/ScaffR</a>
+					</p>
+				</section>
+				
+				<section data-background="images/mobile.jpg" data-background-size="contain"></section>
+				
+				<section data-background="images/sponsors.png" data-background-size="contain"></section>
+
+				<section>
+					<p>What is a SPA anyway?</p><br />
+					<div class="fragment">
+						<p>Web app providing</p>
+						<p class="fragment grow"><strong>rich and fluid UX</strong></p>
+						<p>by loading and executing code</p>
+						<p>within a single page</p>
+					</div>
+				</section>
+				
+				<section data-background="images/gmail-screenshot.png" data-background-size="contain"></section>
+				
+				<section>
+					<p>What's wrong with jQuery?</p>
+					<p class="fragment"><strong>It's imperative :(</strong></p>
+					<div class="fragment">
+					<pre>
+<code><label>Name:</label>
+<input type="text" id="name" />
+<p id="greeting"></p></code></pre>
+						<div class="ng-example">
+							<label>Name:</label>
+							<input type="text" ng-model="example1" />
+							<p>Hello {{ example1 }}!</p>
+						</div>
+
+					</div>
+
+					<pre class="fragment">
+<code>&lt;script type="text/javascript"&gt;
+  $(function () {
+    var $name = $('#name');
+    var $greeting = $('#greeting');
+
+    $name.keyup(function () {
+      $greeting.text('Hello '+ $name.val() + '!');
+    })
+  })
+&lt;/script&gt;</code></pre>
+				</section>				
+				<section>
+					<section>
+						<p>Lets see AngularJS?</p>
+						<div class="fragment">
+						<pre>
+<code><label>Name:</label>
+<input type="text" ng-model="name" />
+<p>Hello {{name}}!</p></code></pre>
+						<br />
+							<div class="ng-example">
+								<label>Name:</label>
+								<input type="text" ng-model="example2" />
+								<p>Hello {{ example2 }}!</p>
+							</div>
+						</div>
+					</section>
+					<section>
+						<h1>Declarative!</h1>
+					</section>
+				</section>
+				
+				<section class="ng-example" ng-init="message='Hello Campers!'">
+					<h3>Data Binding</h3>
+					<h3>HTML/DOM &hArr; JavaScript</h3>
+					<div style="overflow:hidden">
+						<div style="float:left; padding-left:100px; width:400px;">
+							<pre style="box-shadow:none;">&lt;input
+    ng-model="model.message"
+    value="{{ message }}" /&gt;</pre>
+					
+							<br />
+							<input type="text" ng-model="message" />
+
+						</div>
+						<div style="float:right; width:400px;">
+							<pre style="box-shadow:none;">$scope.model = {
+    message: "{{ message }}"
+};</pre>	
+						<br />
+						<pre class="fragment" style="box-shadow:none;" ng-click="message='Hello there!'">$scope.model.message = "Hello there!"</pre>
+						</div>
+					</div>
+					<br />
+					<h3 class="fragment"><strong>Dirty checking</strong></h3>
+				</section>
+				
+				<section>
+					<p>
+						Render<br />&darr;<br />Render<br />&darr;<br />Render<br />&darr;<br />Render<br />&darr;<br />Render<br />&darr;<br />$apply
+					</p>
+				</section>
+				
+				<section data-transition="linear">
+					<h3>Is that it?!?</h3>
+					<div class="fragment">
+						<h3>Nope. There is a lot more going on:</h3>
+						<ul>
+							<li>Data Binding</li>
+							<li>Views</li>
+							<li>Templates</li>
+							<li>Routing and Deep Linking</li>
+							<li>Pub/Sub</li>
+							<li>Dependency Injection</li>
+							<li>MV*</li>
+							<li>...</li>
+						</ul>
+					</div>
+				</section>
+				
+				<section data-transition="linear">
+					<img src="images/jackie-chan-meme.jpg" />
+				</section>
+
+				<section data-transition="fade">
+					<h2>Full Featured Framework!</h2>
+					<img style="border:none;box-shadow:none;" src="images/angular-logo.png" />
+				</section>
+				
+				<section>
+					<p>There are other frameworks, why Angular?!?</p>
+					<br />
+					<p class="fragment">Well...</p>
+					<br />
+					<blockquote class="fragment" cite="http://www.sitepoint.com/10-reasons-use-angularjs/">
+						&ldquo;Angular is the only framework that doesn’t make MVC seem like putting lipstick on a pig.&rdquo;
+					</blockquote>
+				</section>
+				
+				<section>
+					<img src="images/pig-lipstick.jpg" />
+				</section>
+				
+				<section>
+					<img src="images/angular-components.png" />
+				</section>
+				
+				<section>
+					<section>
+						<h3>Everything is a Directive</h3>
+						<pre><code>
+&lt;!DOCTYPE html&gt;
+&lt;html ng-app&gt;
+&lt;head&gt;
+    &lt;title&gt;&lt;/title&gt;
+&lt;/head&gt;
+&lt;body&gt;
+    <div>
+        Name: <input type="text" ng-model="name" />
+        <p>The name is: <span ng-bind="name"></span></p>
+    </div>
+
+    &lt;script src="Scripts/angular.js"&gt;&lt;/script&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+						</code></pre>
+					</section>
+					<section>
+						<pre><code><p>The name is: <span ng-bind="name"></span></p></code></pre>
+						<br />
+						<p>You should use handlebars instead of <strong>ng-bind</strong></p>
+						<br />
+						<pre><code><p>The name is: {{ name }}</p></code></pre>
+						<br />
+						<p>And get much cleaner templates</p>
+					</section>
+				</section>
+				<section>
+					<pre><code>
+<div ng-init="names=['Angular','Ember','Knockout']">
+        <p>Looping with the ng-repeat Directive</p>
+        <ul>
+           <li ng-repeat="name in names">{{ name }}</li>
+        </ul>
+</div>
+					</code></pre>
+					<hr />
+						<div class="ng-example" 
+							 ng-init="names=['Angular','Ember','Knockout']">
+								<p>Looping with the ng-repeat Directive</p>
+								<ul>
+								   <li ng-repeat="name in names">{{ name }}</li>
+								</ul>
+						</div>
+				</section>
+				
+				<section>
+					<p>Imagine teaching the HTML new tricks</p>
+					<br />
+					<p class="fragment">Well you <strong>can!</strong> By using directives!</p>
+					<br />
+					<p class="fragment">More on that later...</p>
+				</section>
+				
+				<section>
+					<section>
+						<pre><code class="html xml">
+<div ng-controller="MyController">
+    Your name:
+    <input type="text" ng-model="username">
+    <button ng-click='sayHello()'>greet</button>
+    <p>{{greeting}}</p>
+</div>
+					</code></pre>
+					<h3 class="fragment">View &larr; <code><strong>$scope</code></strong> &rarr; Controller</h3>
+					<pre><code>
+&lt;script type="text/javascript"&gt;
+    function MyController($scope) {
+        $scope.username = 'World';
+ 
+        $scope.sayHello = function() {
+            $scope.greeting = 'Hello ' + $scope.username + '!';
+        };
+    }
+&lt;/script&gt;
+						</code></pre>
+					
+					</section>
+					<section class="ng-example">
+					
+						<div ng-controller="MyController">
+							Your name:
+							<input type="text" ng-model="username">
+							<button ng-click="sayHello()">Greet</button>
+							<p>{{greeting}}</p>
+						</div>
+				
+					</section>
+				</section>
+				
+				<section data-transition="fade">
+					<img src="images/angular-stack.png" />
+				</section>
+				
+				<section data-transition="fade">
+					<pre><code>&lt;html ng-app="moduleName"&gt;</code></pre>
+					<img src="images/angular-module.png" />
+				</section>
+				
+				<section>
+					<h3>Defining a Module</h3>
+					<pre><code class="javascript">
+var myModule = angular.module('myModule', []);
+ 
+// add some controllers and services
+myModule.controller('myController', ...);
+myModule.service('myService', ...);
+
+// Add provider configuration (route provider for example) 
+myModule.config(function(){...});
+
+// Add service configuration 
+myModule.run(function(){...});
+					</code></pre>
+				</section>
+				
+				<section>
+					<h3>Defining Routes</h3>
+					<pre><code class="javascript">
+var myModule = angular.module('myModule', ['ngRoute']);
+ 
+myModule.config(function ($routeProvider) {
+    $routeProvider
+        .when('/',
+            {
+                controller: 'indexController',
+                templateUrl:'index.html'
+            })
+        .when('/details',
+            {
+                controller: 'detailsController',
+                templateUrl:'details.html'
+            })
+        .otherwise({ redirectTo: '/' });
+});
+					</code></pre>
+				</section>
+				
+				<section>
+					<h3>Where are these views rendered?</h3>
+					<div class="fragment">
+						<pre><code class="html">&lt;div ng-view&gt;&lt;/div&gt;</code></pre>
+						<p>or</p>
+						<pre><code class="html"><ng-view></ng-view></code></pre>
+					</div>
+				</section>
+				
+				<section>
+					<h3>Defining Services</h3>
+					<pre><code class="javascript">
+var myModule = angular.module('myModule');
+
+myModule.factory('customerService', function() {
+    var newServiceInstance = {};
+    var customers = [ ... ];
+	
+    newServiceInstance.getCustomers = function () {
+        return customers;
+    };
+
+    return newServiceInstance;
+});
+					</code></pre>
+				
+				</section>
+				
+				<section>
+					<h3>Injecting Services</h3>
+					<pre><code class="javascript">
+var myModule = angular.module('myModule');
+
+myModule.controller('customerCtrl', function($scope, customerService) {
+    $scope.customerList = customerService.getCustomers();
+    // do stuff with the list
+});
+					</code></pre>
+				</section>
+				
+				<section>
+					<h2>Factory vs Service vs Provider</h2>
+				</section>
+				
+				<section>
+					<h1>Live Coding</h1>
+					<p>Putting it all together</p>
+				</section>
+				
+				<section>
+					<h2>Important!</h2>
+					<br />
+					<p>Be careful when using <strong><code>$apply</code></strong></p>
+					<pre><code class="javascript">
+// Bad
+$scope.message = "Yo!";
+$scope.$apply();
+				
+//Good				
+$scope.$apply(function() {
+    $scope.message = "Yo!";
+});
+					</code></pre>
+				</section>
+				
+				<section>
+					<p><strong>Tools</strong><br />
+					Batarang | Yeoman | Karma</p>
+					<br />
+					<p><strong>UI Components</strong><br />
+					AngularUI | KendoUI | Wijmo</p>
+					<br />
+					<p><strong>Libraries</strong><br />
+					BreezeJS | Firebase</p>
+					<br />
+					<p><strong>Good place to start</strong><br />
+					<a target="_blank" href="http://docs.angularjs.org/guide/">http://docs.angularjs.org/guide/</a></p>
+				</section>
+				
+				<section>
+					<h2>Questions?</h2>
+					<ul>
+						<li>Complete electronic evaluation forms on the computers in the hall and enter to win!!</li>
+						<ul>
+							<li>Infragistics Ultimate</li>
+							<li>Telerik DevCraft</li>
+							<li>JetBrains .NET tools</li>
+							<li>Semos training vouchers</li>
+							<li>Pluralsight subscriptions</li>
+							<li>and many more...</li>
+						</ul>
+					</ul>
+				</section>
+			</div>
+		</div>
+
+		<script src="lib/js/head.min.js"></script>
+		<script src="js/reveal.min.js"></script>
+		<script src="js/angular.min.js"></script>
+		<script src="js/examples.js"></script>
+		
+		<script>
+
+			// Full list of configuration options available here:
+			// https://github.com/hakimel/reveal.js#configuration
+			Reveal.initialize({
+				controls: true,
+				progress: true,
+				history: true,
+				center: true,
+				slideNumber: true,
+
+				transition: 'default', // default/cube/page/concave/zoom/linear/fade/none
+
+				// Parallax scrolling
+				// parallaxBackgroundImage: 'https://s3.amazonaws.com/hakim-static/reveal-js/reveal-parallax-1.jpg',
+				// parallaxBackgroundSize: '2100px 900px',
+
+				// Optional libraries used to extend on reveal.js
+				dependencies: [
+					{ src: 'lib/js/classList.js', condition: function() { return !document.body.classList; } },
+					{ src: 'plugin/markdown/marked.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+					{ src: 'plugin/markdown/markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+					{ src: 'plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } },
+					{ src: 'plugin/zoom-js/zoom.js', async: true, condition: function() { return !!document.body.classList; } },
+					{ src: 'plugin/notes/notes.js', async: true, condition: function() { return !!document.body.classList; } }
+				]
+			});
+
+			Reveal.addEventListener( 'customevent', function() {
+				alert("Hey there");
+			});
+			
+		</script>
+
+	</body>
+</html>
